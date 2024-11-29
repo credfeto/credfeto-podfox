@@ -1,0 +1,10 @@
+[Unit]
+Description=Update Podfox
+After=network.target
+[Service]
+Type=oneshot
+IOSchedulingClass=idle
+CPUSchedulingPolicy=idle
+
+WorkingDirectory=/home/markr/work/personal/credfeto-podfox
+ExecStart=/home/markr/work/personal/credfeto-podfox/update
