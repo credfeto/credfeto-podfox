@@ -1,5 +1,5 @@
 {
-  "podcast-directory" : "/data/videos/Podcasts",
-  "maxnum"            : 5,
+  "podcast-directory" : "/data/podcasts",
+  "maxnum"            : 15,
   "maxage-days"       : 21
 }
