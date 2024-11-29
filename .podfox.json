@@ -1,0 +1,5 @@
+{
+  "podcast-directory" : "/data/videos/Podcasts",
+  "maxnum"            : 5,
+  "maxage-days"       : 21
+}

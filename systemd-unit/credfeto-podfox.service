@@ -5,6 +5,7 @@ After=network.target
 Type=oneshot
 IOSchedulingClass=idle
 CPUSchedulingPolicy=idle
+User=markr
 
 WorkingDirectory=/home/markr/work/personal/credfeto-podfox
 ExecStart=/home/markr/work/personal/credfeto-podfox/update

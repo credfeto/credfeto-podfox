@@ -1,5 +1,26 @@
 #! /bin/sh
 
-/usr/bin/podfox update
-/usr/bin/podfox download
-/usr/bin/podfox prune
+PROG=$0
+die() {
+    echo
+    echo "$@"
+    exit 1
+}
+
+BASEDIR="$(dirname "$(readlink -f "$0")")"
+echo "Script Dir: $BASEDIR"
+
+
+PODFOX_CONFIG=$BASEDIR/.podfox.json
+echo "Config: $PODFOX_CONFIG"
+
+[ -f "$PODFOX_CONFIG" ] || die "Config doesnot exist"
+
+/usr/bin/podfox feeds || die "Could not read feeds"
+
+/usr/bin/podfox update || die "Could not update feeds"
+
+/usr/bin/podfox download || die "Could not download new episodes"
+
+#/usr/bin/podfox prune || die "Could not prune old episodes"
+

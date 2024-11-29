@@ -14,3 +14,6 @@ sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.service" /etc/systemd/system/
 sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.timer" /etc/systemd/system/
 sudo systemctl daemon-reload
 sudo systemctl enable --now credfeto-podfox.timer
+
+[ -d "/home/markr/Podcasts" ] || ln -s /data/videos/Podcasts /home/markr/Podcasts
+[ -f "/home/markr/.podfox.json" ] || ln -s "$BASEDIR/.podfox.json" /home/markr/.podfox.json
