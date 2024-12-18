@@ -2,9 +2,10 @@
 Description=Update Podfox
 
 [Timer]
-OnBootSec=5min
-OnCalendar=*:0/5
-AccuracySec=30
+OnCalendar=hourly
+Persistent=true
+AccuracySec=1us
+RandomizedDelaySec=1200
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=timers.target

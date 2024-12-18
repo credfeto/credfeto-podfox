@@ -10,10 +10,23 @@ die() {
 BASEDIR="$(dirname "$(readlink -f "$0")")"
 echo "Script Dir: $BASEDIR"
 
-sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.service" /etc/systemd/system/
-sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.timer" /etc/systemd/system/
-sudo systemctl daemon-reload
-sudo systemctl enable --now credfeto-podfox.timer
-
+echo "Installing config"
 [ -d "/home/markr/Podcasts" ] || ln -s /data/videos/Podcasts /home/markr/Podcasts
 [ -f "/home/markr/.podfox.json" ] || ln -s "$BASEDIR/.podfox.json" /home/markr/.podfox.json
+
+
+echo "Installing systemd service"
+sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.service" /etc/systemd/system/credfeto-podfox.service
+sudo cp "$BASEDIR/systemd-unit/credfeto-podfox.timer" /etc/systemd/system/credfeto-podfox.timer
+
+sudo systemctl daemon-reload
+
+sudo systemctl disable --now credfeto-podfox.timer
+sudo systemctl daemon-reload
+
+sudo systemctl enable --now credfeto-podfox.timer
+sudo systemctl list-timers --all
+
+systemctl status credfeto-podfox.timer
+
+echo "Done"
