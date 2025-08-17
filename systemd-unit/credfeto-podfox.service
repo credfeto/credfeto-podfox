@@ -1,6 +1,9 @@
 [Unit]
 Description=Update Podfox
-After=network.target
+Requires=network-online.target
+After=network-online.target
+
+
 [Service]
 Type=oneshot
 IOSchedulingClass=idle
